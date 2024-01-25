@@ -16,6 +16,7 @@ Last update :
 }
 
 /* ========================================== RESET */
+.mobile {display: none;}
 body {overflow-x: hidden; font-family: 'Pretendard', sans-serif; line-height: 1; color: #191919;}
 * {margin: 0; padding: 0; box-sizing: border-box;}
 ul,ol {list-style: none;}

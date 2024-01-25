@@ -19,13 +19,39 @@ const Website = () => {
         }
 
         mm.add(options, (context) => {
-            const { isMobile, isDesktop } = context.conditions;
-
-            if(isDesktop){
+            const { isMobile: M, isDesktop: D } = context.conditions;
+            if(D){
                 const tl = gsap.timeline({defaults: {ease: 'none'}})
                 .from('.webpage-desc .right-cont', {xPercent: 100}, 0)
                 .from('.webpage-desc .small-img', {xPercent: 15}, 0)
                 .to('.webpage-desc', {scale: 0.5})
+                .from(text.current, {
+                    yPercent: 100,
+                    opacity: 0,
+                }, '<')
+    
+                const tl2 = gsap.timeline({defaults: {ease: 'none'}})
+                .from(inner.current, {xPercent: 100})
+                .from('.webpage-desc .left-bg img', {scale: 1.4}, 0)
+                .add(tl)
+                .to(slider.current, {
+                    xPercent: -85,
+                    duration: 4,
+                })
+    
+                ScrollTrigger.create({
+                    trigger: container.current,
+                    start: 'top top',
+                    end: '+=5000',
+                    animation: tl2,
+                    pin: true,
+                    scrub: 1,
+                })
+            }
+            if(M){
+                const tl = gsap.timeline({defaults: {ease: 'none'}})
+                .from('.webpage-desc .right-cont', {xPercent: 100}, 0)
+                .to('.webpage-desc', {scale: 0.8})
                 .from(text.current, {
                     yPercent: 100,
                     opacity: 0,
@@ -36,9 +62,13 @@ const Website = () => {
                 .from('.webpage-desc .left-bg img', {scale: 1.4}, 0)
                 .add(tl)
                 .to(slider.current, {
-                    xPercent: -85,
+                    yPercent: -80,
                     duration: 4,
                 })
+                .to(text.current, {
+                    yPercent: 100,
+                    opacity: 0,
+                }, '-=0.5')
 
                 ScrollTrigger.create({
                     trigger: container.current,
@@ -46,9 +76,10 @@ const Website = () => {
                     end: '+=5000',
                     animation: tl2,
                     pin: true,
-                    scrub: 1,
+                    scrub: 2,
                 })
             }
+            
         })
     }, { scope: container })
 
@@ -74,56 +105,56 @@ const Website = () => {
                         </div>
                     </article>
                     <article className="webpage">
-                        <a href="http://eggkorea.kr/" target="_blank" title="새 창으로 열기">
+                        <a href="http://eggkorea.kr/" target="_blank" title="새 창으로 열기" rel="noreferrer">
                             <div className="site-img">
                                 <img src={`${process.env.PUBLIC_URL}/images/website1.jpg`} alt="웹사이트 캡처 이미지" />
                             </div>
                         </a>
                     </article>
                     <article className="webpage">
-                        <a href="http://sbdh.co.kr/" target="_blank" title="새 창으로 열기">
+                        <a href="http://sbdh.co.kr/" target="_blank" title="새 창으로 열기" rel="noreferrer">
                             <div className="site-img">
                                 <img src={`${process.env.PUBLIC_URL}/images/website2.jpg`} alt="웹사이트 캡처 이미지" />
                             </div>
                         </a>
                     </article>
                     <article className="webpage">
-                        <a href="http://kkck.co.kr/" target="_blank" title="새 창으로 열기">
+                        <a href="http://kkck.co.kr/" target="_blank" title="새 창으로 열기" rel="noreferrer">
                             <div className="site-img">
                                 <img src={`${process.env.PUBLIC_URL}/images/website3.jpg`} alt="웹사이트 캡처 이미지" />
                             </div>
                         </a>
                     </article>
                     <article className="webpage">
-                        <a href="https://www.hwahonghospital.com/" target="_blank" title="새 창으로 열기">
+                        <a href="https://www.hwahonghospital.com/" target="_blank" title="새 창으로 열기" rel="noreferrer">
                             <div className="site-img">
                                 <img src={`${process.env.PUBLIC_URL}/images/website4.jpg`} alt="웹사이트 캡처 이미지" />
                             </div>
                         </a>
                     </article>
                     <article className="webpage">
-                        <a href="http://www.davidtoy.co.kr/" target="_blank" title="새 창으로 열기">
+                        <a href="http://www.davidtoy.co.kr/" target="_blank" title="새 창으로 열기" rel="noreferrer">
                             <div className="site-img">
                                 <img src={`${process.env.PUBLIC_URL}/images/website5.jpg`} alt="웹사이트 캡처 이미지" />
                             </div>
                         </a>
                     </article>
                     <article className="webpage">
-                        <a href="https://cubebio.co.kr/" target="_blank" title="새 창으로 열기">
+                        <a href="https://cubebio.co.kr/" target="_blank" title="새 창으로 열기" rel="noreferrer">
                             <div className="site-img">
                                 <img src={`${process.env.PUBLIC_URL}/images/website6.jpg`} alt="웹사이트 캡처 이미지" />
                             </div>
                         </a>
                     </article>
                     <article className="webpage">
-                        <a href="http://joosin.co.kr/" target="_blank" title="새 창으로 열기">
+                        <a href="http://joosin.co.kr/" target="_blank" title="새 창으로 열기" rel="noreferrer">
                             <div className="site-img">
                                 <img src={`${process.env.PUBLIC_URL}/images/website7.jpg`} alt="웹사이트 캡처 이미지" />
                             </div>
                         </a>
                     </article>
                     <article className="webpage" ref={last}>
-                        <a href="http://wbins.dothome.co.kr/" target="_blank" title="새 창으로 열기">
+                        <a href="http://wbins.dothome.co.kr/" target="_blank" title="새 창으로 열기" rel="noreferrer">
                             <div className="site-img">
                                 <img src={`${process.env.PUBLIC_URL}/images/website8.jpg`} alt="웹사이트 캡처 이미지" />
                             </div>

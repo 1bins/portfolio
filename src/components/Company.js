@@ -10,22 +10,33 @@ const Company = () => {
     const back = useRef();
 
     useGSAP(() => {
-        const tl = gsap.timeline({defaults: {ease: 'none'}})
-        .to(front.current, {
-            yPercent: -100
-        })
-        .to(back.current, {
-            yPercent: -20
-        }, '<')
+        let mm = gsap.matchMedia();
+        let options = {
+            isMobile: '(max-width: 500px)',
+            isDesktop: '(min-width: 501px)'
+        }
+    
+        mm.add(options, (context) => {
+            const { isMobile: M, isDesktop: D } = context.conditions;
+    
+            const tl = gsap.timeline({defaults: {ease: 'none'}})
+            .to(front.current, {
+                yPercent: -100
+            })
+            .to(back.current, {
+                yPercent: -20
+            }, '<')
 
-        ScrollTrigger.create({
-            trigger: container.current,
-            start: 'top top',
-            end: '+=2000',
-            animation: tl,
-            pin: true,
-            pinSpacing: false,
-            scrub: 1,
+            ScrollTrigger.create({
+                trigger: container.current,
+                start: 'top top',
+                end: '+=2000',
+                animation: tl,
+                pin: true,
+                pinSpacing: false,
+                scrub: 1,
+            })
+            
         })
 
 

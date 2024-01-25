@@ -9,25 +9,35 @@ const Intro = () => {
     const container = useRef();
 
     useGSAP(() => {
-        let innerHeight = window.innerHeight;
+        let mm = gsap.matchMedia();
+        let options = {
+            isMobile: '(max-width: 500px)',
+            isDesktop: '(min-width: 501px)'
+        }
 
-        const tl = gsap.timeline()
-        .from('.name p:nth-child(1)', {scale: 8, duration: 1.5})
-        .from('.name p:nth-child(2)', {yPercent: innerHeight, xPercent: -40, scale: 8, duration: 1.5}, '<')
-        .from('.name p:nth-child(3)', {yPercent: -innerHeight, xPercent: 30, scale: 7, duration: 1.5}, '<')
-        .from('.name p:nth-child(4)', {yPercent: innerHeight, scale: 10, duration: 2}, '<')
-        .from('.name p:nth-child(5)', {yPercent: -innerHeight, x: 700, scale: 6, duration: 2}, '<')
-        .from('.name p:nth-child(6)', {yPercent: -innerHeight, scale: 8, duration: 2}, '<')
-        .from('.info', {y: 100, opacity: 0, duration: 0.7})
+        mm.add(options, (context) => {
+            const { isMobile: M, isDesktop: D } = context.conditions;
 
-        ScrollTrigger.create({
-            trigger: container.current,
-            start: 'top top',
-            end: '+=2800',
-            animation: tl,
-            pin: true,
-            scrub: 2,
+                const tl = gsap.timeline()
+                .from('.name p:nth-child(1)', {xPercent: D ? -100 : 30, scale: D ? 8 : 6, duration: 1.5})
+                .from('.name p:nth-child(2)', {y: '150vh', xPercent: -40, scale: 8, duration: 1.5}, '<')
+                .from('.name p:nth-child(3)', {y: '-150vh', xPercent: 30, scale: 7, duration: 1.5}, '<')
+                .from('.name p:nth-child(4)', {y: '150vh', scale: 10, duration: 2}, '<')
+                .from('.name p:nth-child(5)', {y: '-150vh', x: 700, scale: 6, duration: 2}, '<')
+                .from('.name p:nth-child(6)', {y: '-150vh', scale: 8, duration: 2}, '<')
+                .from('.info', {y: 100, opacity: 0, duration: 0.7})
+    
+                ScrollTrigger.create({
+                    trigger: container.current,
+                    start: 'top top',
+                    end: '+=2800',
+                    animation: tl,
+                    pin: true,
+                    scrub: 2,
+                })
+
         })
+
         
     }, { scope: container })
 

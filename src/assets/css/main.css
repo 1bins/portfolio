@@ -187,6 +187,7 @@ Last update :
 .web-inner .website-text {
     position: absolute;
     bottom: 40px; left: 50%;
+    width: 100%;
     color: #fff;
     transform: translateX(-50%);
     text-align: center;
@@ -200,7 +201,7 @@ Last update :
     font-size: 1.8rem;
 }
 
-/* ================= Website */
+/* ================= Projects */
 #projects {
     width: 100vw; height: 100vh;
     overflow: hidden;
@@ -262,9 +263,11 @@ Last update :
     top: 0; left: 0;
     font-size: 1.8rem;
     font-weight: 300;
+    
 }
 .proj-inner .side-text .top {
     top: 60px; left: 50%; transform: translateX(-50%);
+    width: 100%;
     line-height: 1.3;
     text-align: center;
 }
@@ -290,6 +293,10 @@ Last update :
     font-size: 9.2vw; color: #ddd;
     text-align: center;
     cursor: default;
+}
+.proj-inner .intro .middle-cont h4 {
+    z-index: 9;
+    color: #2c2c2c;
 }
 .proj-inner .hover-cont {
     position: absolute;
@@ -324,9 +331,112 @@ Last update :
     border-radius: 3px;
 }
 .proj-inner article:nth-child(2) {background: #cfccde;}
-.proj-inner article:nth-child(3) {background: #c5d3c0;}
-.proj-inner article:nth-child(4) {background: #d0ccc1;}
+.proj-inner article:nth-child(3) {background: #bfb69d;}
+.proj-inner article:nth-child(4) {background: #c5d3c0;}
 .proj-inner .proj-wrap:hover .hover-cont {
     visibility: visible;
     opacity: 1;
+}
+
+
+/* ========================================== TABLET */
+@media screen and (max-width:1200px){
+    /* ================= Company Portfolio */
+    .comp-inner .pj-front .front-wrap .items-row .items {width: 25.74vw;}
+    .comp-inner .pj-back .back-wrap .items-row .items {width: 20.5vw;}
+
+    /* ================= Website */
+    .web-inner .webpage-desc .right-cont .small-img {visibility: hidden;}
+    .web-inner .webpage-desc .right-cont .title {font-size: 6rem;}
+
+    /* ================= Projects */
+    .proj-inner .hover-cont {padding: 70px 6.2vw}
+}
+
+
+/* ========================================== MOBILE */
+@media screen and (max-width:500px){
+    .mobile {display: block;}
+    /* ================= INTRO */
+    .intro-inner .name {
+        font-size: 9.2vmax;
+    }
+    .intro-inner .info {
+        margin-top: 15px;
+        font-size: 1.6rem;
+    }
+    .intro-inner .info p:nth-child(2) {margin-top: 3px;}
+
+    /* ================= WALL */
+    .wall-inner .wall-label {font-size: 8vw;}
+    .wall-inner > div {padding: 128px 0;}
+
+    /* ================= Company Portfolio */
+    #company_project {height: 70vh !important;}
+    .comp-inner .pj-front .front-wrap .items-row .items {
+        width: 35.74vw;
+    }
+    .comp-inner .pj-front .front-wrap .items-row .items:is(:nth-child(3), :nth-child(4)) {display: none;}
+    .comp-inner .pj-back .back-wrap .items-row .items {width: 25vw;}
+    .comp-inner .pj-back .back-wrap .items-row .items:last-child {left: 53.8vw;}
+
+    /* ================= Website */
+    .web-inner .webpage-desc .right-cont {width: 84.6%;}
+    .web-inner .webpage-desc .right-cont .title {font-size: 4rem;}
+    .web-inner .webpage-desc .right-cont .cont {
+        font-size: 1.6rem;
+        text-align: center;
+    }
+    .web-inner .website-text {
+        bottom: 0;
+        padding: 14px 0;
+        color: #817965;
+        background: #d5d1c6;
+    }
+    .web-inner .website-text .title {font-size: 2.4rem;}
+    .web-inner .website-text .cont {
+        margin-top: 6px;
+        font-size: 1.5rem;
+        line-height: 1.2;
+        padding: 0 15px;
+        word-break: keep-all;
+    }
+    .web-inner .website-list {
+        display: block;
+        width: auto;
+    }
+    .web-inner .webpage {
+        height: auto;
+        width: 82vw;
+    }
+    .web-inner .webpage .site-img img {height: auto; width: 100%;}
+    .web-inner .webpage:nth-child(even) {margin-top:0;}
+    .web-inner .webpage:nth-child(n+2) {margin: 50px auto 0}
+    .web-inner .webpage:nth-child(2) {margin-top: 0;}
+    .web-inner .webpage-desc {
+        width: 100%;
+        margin: 0 auto;
+    }
+
+    /* ================= Projects */
+    .proj-inner article:not(.intro) .proj-wrap {height: 70vh;}
+    .proj-inner .side-text .top {
+        top: 30px;
+        white-space: pre-line;
+    }
+    .proj-inner .side-text p {font-size: 1.5rem;}
+    .proj-inner .side-text :is(.left, .right) {display: none;}
+    #projects h3 {bottom: 25px;}
+    .proj-inner .proj-wrap {transform: scale(0.85);}
+    .proj-inner article:not(.intro) .middle-cont .img-wrapper {width: 100%; height: auto;}
+    .proj-inner article:not(.intro) .middle-cont img {width: 100%; height: auto;}
+    .proj-inner .hover-cont .title {
+        font-size: 3rem;
+        letter-spacing: -0.1rem;
+    }
+    .proj-inner .hover-cont .txt {
+        font-size: 1.8rem;
+        line-height: 1.2;
+    }
+    .proj-inner .hover-cont .btns li a {font-size: 1.7rem;}
 }
